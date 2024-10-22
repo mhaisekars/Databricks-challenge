@@ -1,0 +1,9 @@
+openai
+pydantic==2.8.2
+duckduckgo-search
+langchain-community
+Wikipedia
+langchain-databricks
+langchain
+streamlit
+langgraph
