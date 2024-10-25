@@ -12,7 +12,7 @@ st.header("Tell us a bit about yourself...")
 name = st.text_input("What's your full name?")
 email = st.text_input("Your email address?")
 trip_title = st.text_input("What's the title of your trip?")
-intro = st.text_area("Give a brief intro to your adventure!", "Write a few lines about your trip...")
+intro = st.text_area("Give a brief intro to your adventure or specify certain tone for the blog.", "Write a few lines about your trip...")
 
 # Number of days in the trip
 st.header("How long was your trip?")
@@ -49,28 +49,32 @@ if st.button("Create My Blog"):
     st.success("Your blog is being crafted! ✨ Hang tight...")
 
     # Display personal details
-    st.write(f"**Author**: {name}")
-    st.write(f"**Email**: {email}")
-    st.write(f"**Trip Title**: {trip_title}")
-    st.write(f"**Introduction**: {intro}")
+    #st.write(f"**Author**: {name}")
+    #st.write(f"**Email**: {email}")
+    #st.write(f"**Trip Title**: {trip_title}")
+    #st.write(f"**Introduction**: {intro}")
     
     itinerary = ""
     # Display day-wise blog content
     for day_detail in daywise_details:
-        st.write(f"### Day {day_detail['day']}:")
-        st.write(day_detail["prompt"])
-        itinerary = f"""{itinerary}
+        #st.write(f"### Day {day_detail['day']}:")
+        #st.write(day_detail["prompt"])
+        itinerary =  f"""\n{itinerary}
                         Day {day_detail['day']}:
-                            day_detail["prompt"]
+                            {day_detail["prompt"]}
                     """
         if day_detail["image_url"]:
-            st.image(day_detail["image_url"], caption=f"Day {day_detail['day']} Photo")
+            #st.image(day_detail["image_url"], caption=f"Day {day_detail['day']} Photo")
+            itinerary = itinerary+f""" \n image url to include for the day: {day_detail["image_url"]}"""
 
     prompt = f"""   Author: {name} 
+                    Email: {email}
+                    Intro or tone: {intro}
                     Trip Title: {trip_title}
                     Itinerary: {itinerary}
                 """
     response = get_response(prompt)
+    #st.write(prompt)
     st.html(response)
 
     # Generate AI-powered content based on the prompt for each day (Placeholder)
