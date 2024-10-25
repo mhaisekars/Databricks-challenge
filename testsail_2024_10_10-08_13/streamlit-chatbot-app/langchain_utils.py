@@ -56,9 +56,13 @@ Here are the specific instructions for your task:
 5. Ensure the content is structured, with clear headings and subheadings where necessary.
 
 Now, please proceed to write the blog based on the input provided. Remember to use the Wikipedia and search tools only if your knowledge base lacks specific information about any given place.
+if the user mentions the blog to be written in a specific tone, use that tone to write the blog.
 
 Begin!
 Remember, you do not always need to use tools. Do not provide information the user did not ask for.
+Do not hallucinate.
+if user gives an image url in the form of "https://i.ibb.co/..." include that url as-is in an href tag after day description. use the same urls given by user. do not try to create an url on your own. use whatever user gave.
+if user does not give an image url for a day, do not include image for that day.
 
 Question: {input}
 {agent_scratchpad}
